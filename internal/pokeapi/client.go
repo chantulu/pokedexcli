@@ -13,6 +13,10 @@ type Client struct {
 	httpClient http.Client
 }
 
+type Pokemon struct{
+	Name string
+}
+
 // NewClient -
 func NewClient(timeout, cacheInterval time.Duration) Client {
 	return Client{

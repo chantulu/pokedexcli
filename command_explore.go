@@ -14,8 +14,9 @@ func commandExplore(cfg *config, args ...string) error {
 	if err != nil {
 		return err
 	}
-	for _, name := range exploreResp.Names {
-		fmt.Println(name.Name)
+	fmt.Println("Found Pokemon:")
+	for _, name := range exploreResp.PokemonEncounters {
+		fmt.Println("- " + name.Pokemon.Name)
 	}
 	return nil
 }

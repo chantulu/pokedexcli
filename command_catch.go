@@ -19,7 +19,11 @@ func commandCatch(cfg *config, args ...string) error {
 	fmt.Println("Throwing a Pokeball at " + pokemonName)
 	if catchResp {
 		fmt.Println(pokemonName + " was caught!")
-		cfg.pokeDex[pokemonName] = pokeapi.Pokemon{Name: pokemonName}
+		pokemon, err2 := pokeapi.GetPokemon(&cfg.pokeapiClient, pokemonName)
+		if err2 != nil {
+			return err2
+		}
+		cfg.pokeDex[pokemonName] = pokeapi.Pokemon{Name: pokemon.Name, Height: pokemon.Height, Weight: pokemon.Weight, Stats: pokemon.Stats}
 		return nil
 	}
 	fmt.Println(pokemonName + " escaped!")

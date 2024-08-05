@@ -15,6 +15,16 @@ type Client struct {
 
 type Pokemon struct{
 	Name string
+	Height int `json:"height"`
+	Weight int `json:"weight"`
+	Stats []struct {
+		BaseStat int `json:"base_stat"`
+		Effort   int `json:"effort"`
+		Stat     struct {
+			Name string `json:"name"`
+			URL  string `json:"url"`
+		} `json:"stat"`
+	} `json:"stats"`
 }
 
 // NewClient -
